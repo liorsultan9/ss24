@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.4.0/wavesurfer.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.4.0/plugin/wavesurfer.microphone.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="yt.css">
+</head>
+
+<body>
+  <h1>Microphone Plugin Sample - wavesurfer.js</h1>
+
+  <div id="waveform" style="display: none"></div>
+
+  <button class="btn btn-primary" onclick="microphone.start()">
+    <i class="glyphicon glyphicon-play"></i>
+    Start Mic
+  </button>
+
+  <button class="btn btn-primary" onclick="microphone.stopDevice()">
+    <i class="glyphicon glyphicon-play"></i>
+    Stop Mic
+  </button>
+
+  <!-- Bottom Scripts -->
+
+  <script src="yt.js"></script>
+</body>
+
+</html>

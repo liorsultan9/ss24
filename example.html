@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Recorder.js Audio-only Example - Record Plugin for Video.js</title>
+
+    <link href="https://vjs.zencdn.net/7.2.3/video-js.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/videojs-wavesurfer/dist/css/videojs.wavesurfer.min.css" rel="stylesheet">
+    <link href="t.css" rel="stylesheet">
+    <link href="videojs.record.min.css" rel="stylesheet">
+
+    <script src="https://vjs.zencdn.net/7.2.3/video.min.js"></script>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/recorderjs/0.1.0/recorder.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js/dist/wavesurfer.min.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js/dist/plugin/wavesurfer.microphone.min.js"></script>
+    <script src="https://unpkg.com/videojs-wavesurfer/dist/videojs.wavesurfer.min.js"></script>
+
+    <script src="videojs.record.min.js"></script>
+    <script src="videojs.record.recorderjs.min.js"></script>
+
+    <style>
+        /* change player background color */
+        #myAudio {
+            background-color: #3a506b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Recording</h2>
+    <audio id="myAudio" class="video-js vjs-default-skin"></audio>
+
+    <h2>Playing</h2>
+    <div id="waveform"></div>
+
+    <div style="text-align: center">
+      <button class="btn btn-primary" onclick="wavesurfer.playPause()">
+        <i class="glyphicon glyphicon-play"></i>
+        Play
+      </button>
+
+      <p class="row">
+        <div class="col-xs-1">
+          <i class="glyphicon glyphicon-zoom-in"></i>
+        </div>
+
+        <div class="col-xs-10">
+          <input id="slider" type="range" min="1" max="200" value="1" style="width: 100%" />
+        </div>
+
+        <div class="col-xs-1">
+          <i class="glyphicon glyphicon-zoom-out"></i>
+        </div>
+      </p>
+    </div>
+<div id="spectrogram"></div>
+
+       id="specLabels" style="left: 0px; position: relative; z-index: 9;"><canvas height="512" width="55"></canvas></div><spectrogram style="left: 0px; position: relative; display: block; user-select: none; height: 512px; width: 100%; overflow: hidden;"><canvas width="109" height="512" style="position: absolute; z-index: 4; width: 109px;"></canvas></spectrogram></div>
+
+<button class="btn btn-primary" onclick="wavesurfer.playPause()">
+  <i class="glyphicon glyphicon-play"></i>
+  Play/Pause
+</button>
+
+    <!-- Bottom Scripts -->
+    <script src="example1.js"></script>
+    <script src="example2.js"></script>
+
+</body>
+
+</html>

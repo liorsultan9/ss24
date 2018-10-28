@@ -1,0 +1,84 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Recorder.js Audio-only Example - Record Plugin for Video.js</title>
+
+  <link href="https://vjs.zencdn.net/7.2.3/video-js.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/videojs-wavesurfer/dist/css/videojs.wavesurfer.min.css" rel="stylesheet">
+  <link href="videojs.record.min.css" rel="stylesheet">
+
+  <script src="https://vjs.zencdn.net/7.2.3/video.min.js"></script>
+  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/recorderjs/0.1.0/recorder.js"></script>
+  <script src="https://unpkg.com/wavesurfer.js/dist/wavesurfer.min.js"></script>
+  <script src="https://unpkg.com/wavesurfer.js/dist/plugin/wavesurfer.microphone.min.js"></script>
+  <script src="https://unpkg.com/videojs-wavesurfer/dist/videojs.wavesurfer.min.js"></script>
+
+  <script src="videojs.record.min.js"></script>
+  <script src="videojs.record.recorderjs.min.js"></script>
+
+  <style>
+  /* change player background color */
+  #myAudio {
+      background-color: #3a506b;
+  }
+  </style>
+</head>
+<body>
+
+<audio id="myAudio" class="video-js vjs-default-skin"></audio>
+
+<script>
+var player = videojs("myAudio", {
+    controls: true,
+    width: 600,
+    height: 300,
+    fluid: false,
+    plugins: {
+        wavesurfer: {
+            src: "live",
+            waveColor: "#6fffe9",
+            progressColor: "black",
+            debug: true,
+            cursorWidth: 1,
+            msDisplayMax: 20,
+            hideScrollbar: true
+        },
+        record: {
+            audio: true,
+            video: false,
+            maxLength: 20,
+            debug: true,
+            audioEngine: "recorder.js"
+        }
+    }
+}, function(){
+    // print version information at startup
+    var msg = 'Using video.js ' + videojs.VERSION +
+        ' with videojs-record ' + videojs.getPluginVersion('record') +
+        ', videojs-wavesurfer ' + videojs.getPluginVersion('wavesurfer') +
+        ' and wavesurfer.js ' + WaveSurfer.VERSION;
+    videojs.log(msg);
+});
+
+// error handling
+player.on('deviceError', function() {
+    console.log('device error:', player.deviceErrorCode);
+});
+
+// user clicked the record button and started recording
+player.on('startRecord', function() {
+    console.log('started recording!');
+});
+
+// user completed recording and stream is available
+player.on('finishRecord', function() {
+    // the blob object contains the recorded data that
+    // can be downloaded by the user, stored on server etc.
+    console.log('finished recording: ', player.recordedData);
+});
+</script>
+</body>
+</html>
